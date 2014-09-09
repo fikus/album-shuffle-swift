@@ -116,6 +116,8 @@
 			children = (
 				E4EC1F6619BFAF16009908F0 /* album-shuffle-swift */,
 				E4EC1F7919BFAF17009908F0 /* album-shuffle-swiftTests */,
+				E4EC1FAA19BFB095009908F0 /* UIKit+AFNetworking */,
+				E4EC1F8C19BFB068009908F0 /* AFNetworking */,
 				E4EC1FC419BFB61B009908F0 /* Rdio.framework */,
 				E4EC1F6519BFAF16009908F0 /* Products */,
 			);
@@ -133,8 +135,6 @@
 		E4EC1F6619BFAF16009908F0 /* album-shuffle-swift */ = {
 			isa = PBXGroup;
 			children = (
-				E4EC1FAA19BFB095009908F0 /* UIKit+AFNetworking */,
-				E4EC1F8C19BFB068009908F0 /* AFNetworking */,
 				E4EC1F8D19BFB07B009908F0 /* album-shuffle-swift-Bridging-Header.h */,
 				E4EC1F6919BFAF16009908F0 /* AppDelegate.swift */,
 				E4EC1F6B19BFAF16009908F0 /* ViewController.swift */,
@@ -194,6 +194,7 @@
 				E4EC1FA019BFB07B009908F0 /* AFURLSessionManager.m */,
 			);
 			name = AFNetworking;
+			path = "album-shuffle-swift";
 			sourceTree = "<group>";
 		};
 		E4EC1FAA19BFB095009908F0 /* UIKit+AFNetworking */ = {
@@ -218,6 +219,7 @@
 				E4EC1FBB19BFB0A9009908F0 /* UIWebView+AFNetworking.m */,
 			);
 			name = "UIKit+AFNetworking";
+			path = "album-shuffle-swift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
