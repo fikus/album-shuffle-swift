@@ -8,11 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-                            
+class ViewController : UIViewController, RdioDelegate {
+
+    lazy var rdio : Rdio = Rdio(consumerKey: RdioConsumerKey, andSecret: RdioSecret, delegate: self)
+
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        rdio.authorizeFromController(self)
+    }
 }
 
