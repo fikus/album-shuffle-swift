@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E42D770219C8E7B4009724E8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42D770119C8E7B4009724E8 /* Settings.swift */; };
+		E42D770419C8EA7D009724E8 /* UIViewGeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42D770319C8EA7D009724E8 /* UIViewGeometryExtensions.swift */; };
+		E42D770619C8EF68009724E8 /* RdioAPIDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E42D770519C8EF68009724E8 /* RdioAPIDelegate.swift */; };
 		E4EC1F6A19BFAF16009908F0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC1F6919BFAF16009908F0 /* AppDelegate.swift */; };
 		E4EC1F6C19BFAF16009908F0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4EC1F6B19BFAF16009908F0 /* ViewController.swift */; };
 		E4EC1F6F19BFAF16009908F0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4EC1F6D19BFAF16009908F0 /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E42D770119C8E7B4009724E8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		E42D770319C8EA7D009724E8 /* UIViewGeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewGeometryExtensions.swift; sourceTree = "<group>"; };
+		E42D770519C8EF68009724E8 /* RdioAPIDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RdioAPIDelegate.swift; sourceTree = "<group>"; };
 		E4EC1F6419BFAF16009908F0 /* album-shuffle-swift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "album-shuffle-swift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4EC1F6819BFAF16009908F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E4EC1F6919BFAF16009908F0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -144,6 +150,9 @@
 				E4EC1F6D19BFAF16009908F0 /* Main.storyboard */,
 				E4EC1F7019BFAF16009908F0 /* Images.xcassets */,
 				E4EC1F6719BFAF16009908F0 /* Supporting Files */,
+				E42D770119C8E7B4009724E8 /* Settings.swift */,
+				E42D770319C8EA7D009724E8 /* UIViewGeometryExtensions.swift */,
+				E42D770519C8EF68009724E8 /* RdioAPIDelegate.swift */,
 			);
 			path = "album-shuffle-swift";
 			sourceTree = "<group>";
@@ -328,6 +337,8 @@
 				E4EC1FA619BFB07B009908F0 /* AFURLConnectionOperation.m in Sources */,
 				E4EC1FBE19BFB0A9009908F0 /* UIAlertView+AFNetworking.m in Sources */,
 				E4EC1FC719BFB840009908F0 /* RdioCredentials.swift in Sources */,
+				E42D770419C8EA7D009724E8 /* UIViewGeometryExtensions.swift in Sources */,
+				E42D770619C8EF68009724E8 /* RdioAPIDelegate.swift in Sources */,
 				E4EC1FA519BFB07B009908F0 /* AFSecurityPolicy.m in Sources */,
 				E4EC1FA119BFB07B009908F0 /* AFHTTPRequestOperation.m in Sources */,
 				E4EC1FA919BFB07B009908F0 /* AFURLSessionManager.m in Sources */,
@@ -342,6 +353,7 @@
 				E4EC1FC219BFB0A9009908F0 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E4EC1FC319BFB0A9009908F0 /* UIWebView+AFNetworking.m in Sources */,
 				E4EC1FA419BFB07B009908F0 /* AFNetworkReachabilityManager.m in Sources */,
+				E42D770219C8E7B4009724E8 /* Settings.swift in Sources */,
 				E4EC1F6A19BFAF16009908F0 /* AppDelegate.swift in Sources */,
 				E4EC1FBD19BFB0A9009908F0 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 			);
@@ -548,6 +560,7 @@
 				E4EC1F8219BFAF17009908F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E4EC1F8319BFAF17009908F0 /* Build configuration list for PBXNativeTarget "album-shuffle-swiftTests" */ = {
 			isa = XCConfigurationList;
@@ -556,6 +569,7 @@
 				E4EC1F8519BFAF17009908F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
