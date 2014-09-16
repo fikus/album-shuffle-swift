@@ -17,7 +17,7 @@ class RdioAPIDelegate : RDAPIRequestDelegate
     var errorBlock : ErrorBlock?
 
     init(successBlock: SuccessBlock?, errorBlock: ErrorBlock?) {
-        super.init(target: self, loadedAction: Selector("loaded:responseData:"), failedAction: Selector("failed:error:"))
+        super.init(target: self, loadedAction: "loaded:responseData:", failedAction: "failed:error:")
         self.successBlock = successBlock
         self.errorBlock = errorBlock
     }

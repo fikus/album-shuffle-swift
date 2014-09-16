@@ -22,7 +22,7 @@ class ViewController : UIViewController, RdioDelegate {
             button.setTitle("Sign in", forState: .Normal)
             button.sizeToFit()
             button.origin = CGPoint(x: 20, y: 100)
-            button.addTarget(self, action: Selector("signInTapped:"), forControlEvents: .TouchUpInside)
+            button.addTarget(self, action: "signInTapped:", forControlEvents: .TouchUpInside)
             self.view.addSubview(button)
         }
     }
