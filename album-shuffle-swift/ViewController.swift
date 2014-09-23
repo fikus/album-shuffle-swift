@@ -12,6 +12,10 @@ class ViewController : UIViewController, RdioDelegate {
 
     lazy var rdio : Rdio = Rdio(consumerKey: RdioConsumerKey, andSecret: RdioSecret, delegate: self)
 
+    var albums : [Dictionary<NSObject, NSObject>]?
+
+    var currentAlbumIndex = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,23 +39,53 @@ class ViewController : UIViewController, RdioDelegate {
         rdio.authorizeFromController(self)
     }
 
-    func rdioDidAuthorizeUser(user: [NSObject : AnyObject]!, withAccessToken accessToken: String!) {
-        let userKey = user["key"]! as String
-        println("User \(userKey) signed in")
-        Settings.rdioAccessToken = accessToken
-        requestCollectionAlbums()
-    }
-
     func requestCollectionAlbums() {
         var delegate = RdioAPIDelegate(successBlock:{request, responseData in
             println("Got results")
-            let albums = responseData as Array<Dictionary<String, NSObject>>
+            let albums = responseData as Array<Dictionary<NSObject, NSObject>>
             println("Number of albums in response: \(albums.count)")
+            self.albums = albums
+            self.startPlayback()
         },
         errorBlock:{request, error in
             println("Got error \(error.description)")
         })
         rdio.callAPIMethod("getAlbumsInCollection", withParameters: ["extras": "-*,key"], delegate:delegate)
+    }
+
+    func shuffleAlbums() {
+        var albums = self.albums!
+        for var j = albums.count-1; j > 0; j-- {
+            let i = Int(arc4random_uniform(UInt32(j)))
+            let tmp = albums[i]
+            albums[i] = albums[j]
+            albums[j] = tmp
+        }
+        self.albums = albums
+    }
+
+    func playAlbumAtIndex(index : Int) {
+        if let album = self.albums?[index] {
+            self.currentAlbumIndex = index
+            let key = album["key"] as NSString
+            println("Playing album with key \(key)")
+            self.rdio.player.playSource(key)
+        }
+    }
+
+    func startPlayback() {
+        shuffleAlbums()
+        self.rdio.preparePlayerWithDelegate(nil)
+        playAlbumAtIndex(0)
+    }
+
+    // MARK: - RdioDelegate
+
+    func rdioDidAuthorizeUser(user: [NSObject : AnyObject]!, withAccessToken accessToken: String!) {
+        let userKey = user["key"]! as String
+        println("User \(userKey) signed in")
+        Settings.rdioAccessToken = accessToken
+        requestCollectionAlbums()
     }
 
 }
