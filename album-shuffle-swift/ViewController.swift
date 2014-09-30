@@ -17,6 +17,17 @@ class ViewController : UIViewController, RdioDelegate {
     var currentAlbumIndex = 0
 
     var signInButton : UIButton?
+    var albumImageView : UIImageView?
+    var currentTrack : String?
+
+    override func loadView() {
+        super.loadView()
+
+        albumImageView = UIImageView()
+        albumImageView?.bounds.size = CGSizeMake(240, 240)
+        albumImageView?.center = view.center
+        view.addSubview(albumImageView!)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,8 +91,34 @@ class ViewController : UIViewController, RdioDelegate {
 
     func startPlayback() {
         shuffleAlbums()
-        self.rdio.preparePlayerWithDelegate(nil)
+        let player = self.rdio.preparePlayerWithDelegate(nil)
+        addObserverToPlayer(player)
         playAlbumAtIndex(0)
+    }
+
+    override func observeValueForKeyPath(keyPath: String!, ofObject object: AnyObject!, change: [NSObject : AnyObject]!, context: UnsafeMutablePointer<Void>) {
+        if let player = object as? RDPlayer {
+            let track = player.currentTrack
+            if track != currentTrack {
+                currentTrack = track
+                let delegate = RdioAPIDelegate(successBlock: {request, responseData in
+                    if let responseTrack = responseData[self.currentTrack!] as? [String: NSObject] {
+                        let icon = responseTrack["bigIcon"] as NSString
+                        let iconUrl = NSURL(string: icon)
+                        self.albumImageView?.setImageWithURL(iconUrl)
+                    }
+                    }, errorBlock: {request, error in
+                        println("Got an error")
+                })
+                rdio.callAPIMethod("get",
+                    withParameters: ["keys": "\(currentTrack!)", "extras": "bigIcon"],
+                    delegate: delegate)
+            }
+        }
+    }
+
+    func addObserverToPlayer(player : RDPlayer) {
+        player.addObserver(self, forKeyPath: "currentTrack", options: .New, context: nil)
     }
 
     // MARK: - RdioDelegate
