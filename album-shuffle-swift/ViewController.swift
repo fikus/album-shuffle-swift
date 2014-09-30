@@ -16,6 +16,8 @@ class ViewController : UIViewController, RdioDelegate {
 
     var currentAlbumIndex = 0
 
+    var signInButton : UIButton?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +30,7 @@ class ViewController : UIViewController, RdioDelegate {
             button.origin = CGPoint(x: 20, y: 100)
             button.addTarget(self, action: "signInTapped:", forControlEvents: .TouchUpInside)
             self.view.addSubview(button)
+            signInButton = button
         }
     }
 
@@ -82,6 +85,7 @@ class ViewController : UIViewController, RdioDelegate {
     // MARK: - RdioDelegate
 
     func rdioDidAuthorizeUser(user: [NSObject : AnyObject]!, withAccessToken accessToken: String!) {
+        signInButton?.removeFromSuperview()
         let userKey = user["key"]! as String
         println("User \(userKey) signed in")
         Settings.rdioAccessToken = accessToken
