@@ -47,13 +47,15 @@ class ViewController : UIViewController, RdioDelegate {
             println("Got results")
             let albums = responseData as Array<Dictionary<NSObject, NSObject>>
             println("Number of albums in response: \(albums.count)")
-            self.albums = albums
+            let streamableAlbums = filter(albums, { album in (album["canStream"] as NSNumber).boolValue })
+            println("Streamable albums: \(streamableAlbums.count)")
+            self.albums = streamableAlbums
             self.startPlayback()
         },
         errorBlock:{request, error in
             println("Got error \(error.description)")
         })
-        rdio.callAPIMethod("getAlbumsInCollection", withParameters: ["extras": "-*,key"], delegate:delegate)
+        rdio.callAPIMethod("getAlbumsInCollection", withParameters: ["extras": "-*,key,canStream"], delegate:delegate)
     }
 
     func shuffleAlbums() {
